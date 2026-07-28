@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdReward Hub - Watch Ads & Earn</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <div class="logo-icon">▶</div>
+        <span>AdReward</span>
+      </div>
+
+      <nav>
+        <a href="#" class="nav-link active" data-page="dashboard">
+          <span>⌂</span> Dashboard
+        </a>
+
+        <a href="#" class="nav-link" data-page="watch">
+          <span>▶</span> Watch Ads
+        </a>
+
+        <a href="#" class="nav-link" data-page="wallet">
+          <span>◉</span> Wallet
+        </a>
+
+        <a href="#" class="nav-link" data-page="history">
+          <span>▣</span> Earning History
+        </a>
+
+        <a href="#" class="nav-link" data-page="withdraw">
+          <span>↗</span> Withdraw
+        </a>
+
+        <a href="#" class="nav-link" data-page="profile">
+          <span>◯</span> Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="dark-toggle" id="themeToggle">
+          ◐ <span>Dark Mode</span>
+        </button>
+
+        <button class="logout-btn" id="logoutBtn">
+          ⇥ <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+      <!-- Header -->
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn">☰</button>
+
+        <div>
+          <h2 id="pageTitle">Dashboard</h2>
+          <p>Welcome back, <strong id="username">User</strong> 👋</p>
+        </div>
+
+        <div class="top-actions">
+          <button class="notification-btn">🔔</button>
+
+          <div class="user-profile">
+            <div class="avatar">U</div>
+            <div>
+              <strong id="topUsername">User</strong>
+              <small>Member</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="content">
+
+        <!-- Dashboard -->
+        <div class="page active-page" id="dashboard">
+
+          <div class="welcome-card">
+            <div>
+              <span class="badge">🎉 Welcome back!</span>
+              <h1>Earn rewards by watching ads</h1>
+              <p>Watch available advertisements and earn coins.</p>
+              <button class="primary-btn" data-go="watch">
+                Start Earning →
+              </button>
+            </div>
+
+            <div class="welcome-illustration">
+              💰
+            </div>
+          </div>
+
+          <div class="stats-grid">
+
+            <div class="stat-card">
+              <div class="stat-icon purple">◉</div>
+              <div>
+                <span>Total Balance</span>
+                <h2><span id="balance">0.00</span> Coins</h2>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon blue">▶</div>
+              <div>
+                <span>Ads Watched</span>
+                <h2 id="adsWatched">0</h2>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon green">↗</div>
+              <div>
+                <span>Total Earned</span>
+                <h2><span id="totalEarned">0.00</span> Coins</h2>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon orange">★</div>
+              <div>
+                <span>Daily Streak</span>
+                <h2><span id="streak">1</span> Days</h2>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <h2>Available Ads</h2>
+              <p>Complete ads to earn rewards</p>
+            </div>
+
+            <button class="outline-btn" data-go="watch">
+              View All →
+            </button>
+          </div>
+
+          <div class="ad-grid" id="dashboardAds"></div>
+
+          <div class="section-heading">
+            <div>
+              <h2>Recent Activity</h2>
+              <p>Your latest earning activity</p>
+            </div>
+
+            <button class="outline-btn" data-go="history">
+              View History →
+            </button>
+          </div>
+
+          <div class="activity-box" id="dashboardActivity">
+            <p class="empty-state">No activity yet. Start watching ads to earn coins.</p>
+          </div>
+
+        </div>
+
+        <!-- Watch Ads -->
+        <div class="page" id="watch">
+
+          <div class="page-intro">
+            <div>
+              <h1>Watch Ads & Earn</h1>
+              <p>Complete available ads to earn coins.</p>
+            </div>
+
+            <div class="daily-progress">
+              <span>Daily Progress</span>
+              <strong><span id="dailyAds">0</span> / 20 Ads</strong>
+              <div class="progress-bar">
+                <div id="progressFill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ad-grid" id="allAds"></div>
+
+        </div>
+
+        <!-- Wallet -->
+        <div class="page" id="wallet">
+
+          <div class="wallet-card">
+            <div>
+              <span>Available Balance</span>
+              <h1><span id="walletBalance">0.00</span> Coins</h1>
+              <p>Keep earning to increase your balance.</p>
+            </div>
+
+            <div class="wallet-icon">💳</div>
+          </div>
+
+          <div class="wallet-actions">
+            <button class="primary-btn" data-go="watch">▶ Watch Ads</button>
+            <button class="outline-btn" data-go="withdraw">↗ Withdraw</button>
+          </div>
+
+          <div class="section-heading">
+            <h2>Wallet Summary</h2>
+          </div>
+
+          <div class="summary-grid">
+            <div class="summary-box">
+              <span>Total Earned</span>
+              <strong id="walletTotalEarned">0.00 Coins</strong>
+            </div>
+
+            <div class="summary-box">
+              <span>Total Withdrawn</span>
+              <strong id="totalWithdrawn">0.00 Coins</strong>
+            </div>
+
+            <div class="summary-box">
+              <span>Pending Withdrawals</span>
+              <strong id="pendingWithdrawals">0.00 Coins</strong>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- History -->
+        <div class="page" id="history">
+
+          <div class="page-intro">
+            <div>
+              <h1>Earning History</h1>
+              <p>Track your complete earning activity.</p>
+            </div>
+          </div>
+
+          <div class="table-box">
+            <table>
+              <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Date</th>
+                  <th>Reward</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody id="historyTable">
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- Withdraw -->
+        <div class="page" id="withdraw">
+
+          <div class="withdraw-layout">
+
+            <div class="withdraw-card">
+              <h2>Request Withdrawal</h2>
+              <p>Withdraw your available balance.</p>
+
+              <div class="balance-display">
+                <span>Available Balance</span>
+                <strong><span id="withdrawBalance">0.00</span> Coins</strong>
+              </div>
+
+              <label>Payment Method</label>
+              <select id="paymentMethod">
+                <option>PayPal</option>
+                <option>Bank Transfer</option>
+                <option>Digital Wallet</option>
+              </select>
+
+              <label>Account Details</label>
+              <input
+                type="text"
+                id="accountDetails"
+                placeholder="Enter your payment account"
+              />
+
+              <label>Amount</label>
+              <input
+                type="number"
+                id="withdrawAmount"
+                placeholder="Enter amount"
+                min="1"
+              />
+
+              <button class="primary-btn full-btn" id="withdrawBtn">
+                Submit Withdrawal Request
+              </button>
+
+              <small class="withdraw-note">
+                Minimum withdrawal amount can be configured by the administrator.
+              </small>
+            </div>
+
+            <div class="withdraw-info">
+              <h2>Withdrawal Information</h2>
+
+              <div class="info-item">
+                <span>⏱</span>
+                <div>
+                  <strong>Processing Time</strong>
+                  <p>Requests are processed according to your platform's payout policy.</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <span>🔒</span>
+                <div>
+                  <strong>Secure Payments</strong>
+                  <p>Always use your own verified payment account.</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <span>✓</span>
+                <div>
+                  <strong>Admin Review</strong>
+                  <p>Withdrawal requests can be reviewed before processing.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Profile -->
+        <div class="page" id="profile">
+
+          <div class="profile-card">
+
+            <div class="large-avatar">U</div>
+
+            <h2 id="profileName">User</h2>
+            <p>Member since 2026</p>
+
+            <div class="profile-form">
+
+              <label>Username</label>
+              <input type="text" id="profileUsername" value="User" />
+
+              <label>Email</label>
+              <input type="email" id="profileEmail" placeholder="your@email.com" />
+
+              <button class="primary-btn" id="saveProfile">
+                Save Changes
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Ad Modal -->
+  <div class="modal-overlay" id="adModal">
+
+    <div class="ad-modal">
+
+      <button class="close-modal" id="closeModal">×</button>
+
+      <div class="modal-ad-icon">▶</div>
+
+      <h2 id="modalAdTitle">Advertisement</h2>
+
+      <p>Please wait while the advertisement is displayed.</p>
+
+      <div class="timer-circle">
+        <span id="adTimer">10</span>
+      </div>
+
+      <div class="modal-progress">
+        <div id="modalProgress"></div>
+      </div>
+
+      <button class="primary-btn full-btn" id="claimReward" disabled>
+        Watch Ad to Continue
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
